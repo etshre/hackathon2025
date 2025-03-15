@@ -5,6 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mouse Chaser</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            position: relative;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #chaserButton {
+            position: absolute;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -32,6 +48,10 @@
         }
 
         button.addEventListener("mouseenter", moveButton);
+        button.addEventListener("click", (event) => {
+            event.preventDefault(); // Prevent clicking
+            moveButton();
+        });
 
         // Initial position
         moveButton();
