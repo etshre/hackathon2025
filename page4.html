@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+    <title>Infinite Tic Tac Toe</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+        }
+        #board {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+            grid-template-rows: repeat(auto-fill, minmax(50px, 1fr));
+            width: 100vw;
+            height: 100vh;
+        }
+        .cell {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid black;
+            font-size: 1.5em;
+            user-select: none;
+        }
+        .cross-cursor {
+            cursor: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIgdmlld0JveD0iMCAwIDEwIDEwIj48dGV4dCB4PSIwIiB5PSI4IiBmb250LXNpemU9IjgiIGZpbGw9ImJsYWNrIj5YPC90ZXh0Pjwvc3ZnPg==') 5 5, auto;
+        }
+        .circle-cursor {
+            cursor: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIgdmlld0JveD0iMCAwIDEwIDEwIj48Y2lyY2xlIGN4PSI1IiBjeT0iNSIgcj0iNCIgc3Ryb2tlPSJibGFjayIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIi8+PC9zdmc+'), auto;
+        }
+    </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav>
+      <a href="index.html">Essay Correcter</a>
+      <a href="page2.html">Button Clicker</a>
+      <a href="page3.html">Random Number Generator</a>
+      <a href="page4.html">Tic Tac Toe</a>
+  </nav>
+    <h1>Infinite Tic Tac Toe</h1>
+    <div id="board"></div>
+    <script>
+        const board = document.getElementById('board');
+        const cells = {};
+        let currentPlayer = 'X';
+        document.body.classList.add('cross-cursor');
+
+        function getCellKey(x, y) {
+            return `${x},${y}`;
+        }
+
+        function createCell(x, y) {
+            const key = getCellKey(x, y);
+            if (cells[key]) return;
+
+            const cell = document.createElement('div');
+            cell.classList.add('cell');
+            cell.dataset.x = x;
+            cell.dataset.y = y;
+            cell.addEventListener('click', () => makeMove(cell, x, y));
+            cells[key] = cell;
+            board.appendChild(cell);
+        }
+
+        function makeMove(cell, x, y) {
+            if (cell.textContent) return;
+            cell.textContent = currentPlayer;
+            expandBoard(x, y);
+            currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+            document.body.classList.toggle('cross-cursor');
+            document.body.classList.toggle('circle-cursor');
+        }
+
+        function expandBoard(x, y) {
+            for (let dx = -1; dx <= 1; dx++) {
+                for (let dy = -1; dy <= 1; dy++) {
+                    if (dx === 0 && dy === 0) continue;
+                    createCell(x + dx, y + dy);
+                }
+            }
+        }
+
+        function initializeBoard() {
+            for (let x = -2; x <= 2; x++) {
+                for (let y = -2; y <= 2; y++) {
+                    createCell(x, y);
+                }
+            }
+        }
+
+        initializeBoard();
+    </script>
+</body>
+</html>

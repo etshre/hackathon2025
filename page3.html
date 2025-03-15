@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equation with Random Wrong Answer</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function calculateWrongResult() {
+            const equation = document.getElementById('user-equation').value;
+            let correctResult;
+            try {
+                correctResult = new Function('return ' + equation)();
+            } catch (error) {
+                document.getElementById('result').textContent = 'Invalid equation. Please try again.';
+                return;
+            }
+
+            const wrongResult = generateWrongResult(correctResult);
+            document.getElementById('result').textContent = `Result: ${wrongResult.toFixed(2)}`;
+        }
+
+        function generateWrongResult(correctResult) {
+            const deviation = Math.random() * 10 - 5; // Random number between -5 and 5
+            return correctResult + deviation;
+        }
+    </script>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="index.html">Essay Correcter</a>
+        <a href="page2.html">Button Clicker</a>
+        <a href="page3.html">Random Number Generator</a>
+        <a href="page4.html">Tic Tac Toe</a>
+    </nav>
+
+    <h1>Equation with Random Wrong Answer</h1>
+    <label for="user-equation">Enter an equation:</label>
+    <input type="text" id="user-equation" placeholder="e.g., 5 + 3 * 2">
+    <button onclick="calculateWrongResult()">Calculate</button>
+    <p id="result"></p>
+</body>
+</html>

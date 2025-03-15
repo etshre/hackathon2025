@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Essay Checker</title>
+    <script>
+        const randomChar = String.fromCharCode(97 + Math.floor(Math.random() * 26)); // Random letter a-z
+
+        function checkInput() {
+            let inputBox = document.getElementById("inputBox");
+            if (inputBox.value.includes(randomChar)) {
+                document.body.innerHTML = "oh no, you typed the magic letter!"; // Fallback message
+                setTimeout(() => {
+                    window.location.href = "https://r.mtdv.me/watch?v=WU8PJr4ZD9"; // Redirect after 2 seconds
+                }, 2000);
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="index.html">Essay Correcter</a>
+        <a href="page2.html">Button Clicker</a>
+        <a href="page3.html">Random Number Generator</a>
+        <a href="page4.html">Useless Website</a>
+    </nav>
+
+    <h1>Essay Correcter!</h1>
+    <p>Type your essay in the box below.</p>
+    <textarea id="inputBox" oninput="checkInput()" placeholder="Start typing..."></textarea>
+
+    <footer>Made with 💙 by astley rick</footer>
+
+</body>
+</html>
