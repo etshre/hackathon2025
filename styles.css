@@ -1,0 +1,83 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f6fc;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  flex-direction: column;
+}
+
+/* Navigation Bar Styling */
+nav {
+  width: 100%;
+  background-color: #4A90E2;
+  padding: 10px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+nav a {
+  color: white;
+  font-size: 1.2rem;
+  margin: 0 20px;
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Content Section */
+h1 {
+  font-size: 3rem;
+  color: #4A90E2;
+  margin-top: 80px; /* Space for navbar */
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+textarea {
+  width: 100%;
+  max-width: 600px;
+  height: 300px;
+  border: 2px solid #4A90E2;
+  border-radius: 8px;
+  padding: 20px;
+  font-size: 1.2rem;
+  font-family: 'Arial', sans-serif;
+  background-color: #fff;
+  color: #333;
+  resize: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+textarea:focus {
+  border-color: #00B8D4;
+  box-shadow: 0 4px 10px rgba(0, 184, 212, 0.3);
+  outline: none;
+}
+
+textarea::placeholder {
+  color: #aaa;
+  font-style: italic;
+}
+
+footer {
+  position: fixed;
+  bottom: 20px;
+  font-size: 1rem;
+  color: #888;
+}
